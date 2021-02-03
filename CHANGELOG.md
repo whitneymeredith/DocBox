@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-=======
->>>>>>> ee6d688b97ca0876b05f86e757666be4294e1a0a
 # CHANGELOG
 
 All notable changes to this project will be documented in this file.
