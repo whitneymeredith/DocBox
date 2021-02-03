@@ -11,8 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* Adds `json` output strategy
-* Adds `addStrategy()` for multiple strategy support
+* New `json` output strategy for machine-readable documentation
+* New `addStrategy()` method for multiple strategy support
 
 ### Changed
 
