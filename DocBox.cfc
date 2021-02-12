@@ -1,8 +1,10 @@
 /**
  * @author Luis Majano <lmajano@ortussolutions.com>
  *
- * Core DocBox documentation class
- * <br>
+ * Core DocBox documentation class that takes care of generating docs for you.
+ * You can initialize the object with a strategy and strategy properties or with nothing at all.
+ * You can then generate the docs according to 1 or more output strategies via the <code>generate()</code> method.
+ * <hr>
  * <small><em>Copyright 2015 Ortus Solutions, Corp <a href="www.ortussolutions.com">www.ortussolutions.com</a></em></small>
  */
 component accessors="true" {
@@ -20,6 +22,7 @@ component accessors="true" {
 	 *
 	 * @strategy The documentation output strategy to utilize.
 	 * @properties Struct of data properties required for the specific output strategy
+	 *
 	 * @return The DocBox instance
 	 */
 	DocBox function init(
@@ -27,12 +30,16 @@ component accessors="true" {
 		struct properties = {}
 	){
 		variables.strategies = [];
+		variables.properties = arguments.properties;
+
+		// If we have a strategy, then add it in
 		if ( len( arguments.strategy ) ) {
 			addStrategy(
 				strategy   = arguments.strategy,
 				properties = arguments.properties
 			);
 		}
+
 		return this;
 	}
 
@@ -40,6 +47,7 @@ component accessors="true" {
 	 * Backwards-compatible setter to add a strategy to the docbox configuration.
 	 *
 	 * @see addStrategy
+	 *
 	 * @return The DocBox instance
 	 */
 	DocBox function setStrategy(){
@@ -52,6 +60,7 @@ component accessors="true" {
 	 * @strategy The optional strategy to generate the documentation with. This can be a class path or an instance of the  strategy. If none is passed then
 	 * we create the default strategy of 'docbox.strategy.api.HTMLAPIStrategy'
 	 * @properties The struct of properties to instantiate the strategy with.
+	 *
 	 * @return The DocBox instance
 	 */
 	DocBox function addStrategy(
@@ -94,7 +103,6 @@ component accessors="true" {
 	 * @mapping The base mapping for the folder. Only required if the source is a string
 	 * @excludes	A regex that will be applied to the input source to exclude from the docs
 	 *
-	 * @throws StrategyNotSetException
 	 * @return The DocBox instance
 	 */
 	DocBox function generate(
@@ -102,13 +110,9 @@ component accessors="true" {
 		string mapping  = "",
 		string excludes = ""
 	){
-		// verify we have at least one strategy defined
+		// verify we have at least one strategy defined, if not, auto add the HTML strategy
 		if ( isNull( getStrategies() ) || !getStrategies().len() ) {
-			throw(
-				type    = "StrategyNotSetException",
-				message = "No Template Strategy has been set.",
-				detail  = "Please call docbox.withStrategy( strategy, properties ) before running generate()."
-			);
+			this.addStrategy( strategy : "HTML", properties : variables.properties );
 		}
 
 		// inflate the incoming input and mappings
@@ -276,6 +280,7 @@ component accessors="true" {
 	 * Gets an array of the classes that this metadata implements, in order of extension
 	 *
 	 * @metadata The metadata to look at
+	 *
 	 * @return array of component interfaces implemented by some component in this package
 	 */
 	private array function getImplements( required struct metadata ){
@@ -306,6 +311,7 @@ component accessors="true" {
 	 * Gets an array of the classes that this metadata extends, in order of extension
 	 *
 	 * @metadata The metadata to look at
+	 *
 	 * @return array of classes inherited by some component in this package
 	 */
 	private array function getInheritance( required struct metadata ){
@@ -334,6 +340,7 @@ component accessors="true" {
 	 * @param2 param 2
 	 *
 	 * @throws Throws X,Y and Z
+	 *
 	 * @return Nothing
 	 */
 	function testFunction( param1, param2 ){

@@ -1,5 +1,4 @@
 ## OS and IDEs
-testbox
 .DS_Store
 .settings
 settings.xml
@@ -22,9 +21,8 @@ modules/*
 ## Builds (DocBox-specific)
 *.iml
 tests/output/*
+tests/apidocs/*
 tests/tmp/
-tests/node_modules
-build/build.number
-artifacts/*
-build-docbox/*
-tests/DocBox-APIDocs
+.artifacts/*
+.tmp/*
+changelog-latest.md

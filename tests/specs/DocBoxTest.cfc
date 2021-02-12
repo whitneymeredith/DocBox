@@ -40,14 +40,18 @@ component extends="testbox.system.BaseSpec" {
 				);
 			} );
 
-			it( "throws if no strategy is set", function(){
-				expect( function(){
-					variables.docbox.generate(
-						source   = expandPath( "/tests" ),
-						mapping  = "tests",
-						excludes = "(coldbox|build\-docbox)"
-					);
-				} ).toThrow( "StrategyNotSetException" );
+			it( "defaults to HTML if no strategy is set", function(){
+				variables.docbox.init(
+					properties = {
+						projectTitle = "Test", outputDir = variables.HTMLOutputDir
+					}
+				)
+				.generate(
+					source   = expandPath( "/tests" ),
+					mapping  = "tests",
+					excludes = "(coldbox|build\-docbox)"
+				);
+				expect( variables.docbox.getStrategies() ).notTobeEmpty();
 			} );
 
 			it( "lets me set my own strategy", function(){

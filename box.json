@@ -1,6 +1,6 @@
 {
     "name":"DocBox",
-    "version":"@build.version@+@build.number@",
+    "version":"3.0.0",
     "author":"Ortus Solutions, Corp",
     "location":"http://downloads.ortussolutions.com/ortussolutions/docbox/@build.version@/docbox-@build.version@.zip",
     "homepage":"https://forgebox.io/view/docbox",
@@ -37,6 +37,7 @@
         "coldbox-5-router-documentation.png"
     ],
     "scripts":{
+        "release":"recipe build/release.boxr",
         "format":"cfformat run DocBox.cfc,strategy,tests",
         "format:watch":"cfformat watch DocBox.cfc,strategy,tests ./.cfformat.json",
         "format:check":"cfformat check DocBox.cfc,strategy,tests"
