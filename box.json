@@ -3,15 +3,15 @@
     "version":"@build.version@+@build.number@",
     "author":"Ortus Solutions, Corp",
     "location":"http://downloads.ortussolutions.com/ortussolutions/docbox/@build.version@/docbox-@build.version@.zip",
-    "homepage":"https://www.ortussolutions.com",
-    "documentation":"https://github.com/Ortus-Solutions/DocBox/wiki",
+    "homepage":"https://forgebox.io/view/docbox",
+    "documentation":"https://docbox.ortusbooks.com/",
     "repository":{
         "type":"git",
         "url":"https://github.com/Ortus-Solutions/DocBox"
     },
     "bugs":"https://ortussolutions.atlassian.net/projects/DOCBOX",
     "slug":"docbox",
-    "shortDescription":"API Documentation generator for ColdFusion (CFML) using JavaDocs conventions",
+    "shortDescription":"CFC API Documentation generator for ColdFusion (CFML) using JavaDoc conventions",
     "type":"projects",
     "keywords":"apidocs, coldfusion docs, javadocs, cfc docs",
     "license":[
