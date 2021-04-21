@@ -78,7 +78,7 @@ docbox.generate( source="/my/path", mapping="coldbox" );
 
 docbox.generate(
     source  = "#expandPath( '/docbox' )#",
-    mapping = "coldbox",
+    mapping = "docbox",
     excludes = "tests"
 );
 ```
