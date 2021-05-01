@@ -35,6 +35,41 @@ component extends="testbox.system.BaseSpec" {
 				);
 			} );
 
+			// TODO: Implement
+			xit( "throws exception when source does not exist", function() {
+				expect( function(){
+					var testDocBox = new docbox.DocBox(
+						strategy   = "docbox.strategy.api.HTMLAPIStrategy",
+						properties = {
+							projectTitle : "DocBox Tests",
+							outputDir    : variables.testOutputDir
+						}
+					);
+					testDocBox.generate(
+						source   = "/bla",
+						mapping  = "tests",
+						excludes = "(coldbox|build\-docbox)"
+					);
+				}).toThrow( "InvalidConfigurationException" );
+			});
+
+			it( "throws exception when outputDir does not exist", function() {
+				expect( function(){
+					var testDocBox = new docbox.DocBox(
+						strategy   = "docbox.strategy.api.HTMLAPIStrategy",
+						properties = {
+							projectTitle : "DocBox Tests",
+							outputDir    : expandPath( "nowhere/USA" )
+						}
+					);
+					testDocBox.generate(
+						source   = expandPath( "/tests" ),
+						mapping  = "tests",
+						excludes = "(coldbox|build\-docbox)"
+					);
+				}).toThrow( "InvalidConfigurationException" );
+			});
+
 			it( "produces JSON output in the correct directory", function(){
 				variables.docbox.generate(
 					source   = expandPath( "/tests" ),

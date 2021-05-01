@@ -171,6 +171,13 @@ component accessors="true" {
 
 		// iterate over input sources
 		for ( var thisInput in arguments.inputSource ) {
+			if ( !directoryExists( thisInput.dir ) ){
+				throw(
+					message = "Invalid configuration; source directory not found",
+					type = "InvalidConfigurationException",
+					detail ="Configured source #thisInput.dir# does not exist."
+				);
+			}
 			var aFiles = directoryList( thisInput.dir, true, "path", "*.cfc" );
 
 			// iterate over files found

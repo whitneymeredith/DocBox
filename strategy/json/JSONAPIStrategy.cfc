@@ -46,6 +46,13 @@ component extends="docbox.strategy.AbstractTemplateStrategy" accessors="true" {
 	 * @metadata All component metadata, sourced from DocBox.
 	 */
 	component function run( required query metadata ){
+		if ( !directoryExists( getOutputDir() ) ){
+			throw(
+				message = "Invalid configuration; output directory not found",
+				type = "InvalidConfigurationException",
+				detail = "OutputDir #getOutputDir()# does not exist."
+			);
+		}
 		ensureDirectory( getOutputDir() );
 
 		var classes = normalizePackages(

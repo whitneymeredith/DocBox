@@ -30,7 +30,13 @@
 		var args = 0;
 		var packages = buildPackageTree(arguments.qMetadata, true);
 
-		ensureDirectory(getDirectoryFromPath(getOutputFile()));
+		if ( !directoryExists( getDirectoryFromPath( getOutputFile() ) ) ){
+			throw(
+				message = "Invalid configuration; configured output directory not found",
+				type = "InvalidConfigurationException",
+				detail = "Path #getDirectoryFromPath( getOutputFile() )# does not exist."
+			);
+		}
 
 		//write the index template
 		args = {path=getOutputFile()
