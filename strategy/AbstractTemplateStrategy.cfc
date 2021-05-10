@@ -15,9 +15,19 @@ component doc_abstract="true" accessors="true" {
 	 */
 	property name="propertyQueryCache" type="struct";
 
-	// static constants
-	variables.static.META_ABSTRACT = "doc_abstract";
-	variables.static.META_GENERIC  = "doc_generic";
+	/**
+	 * Custom annotation for noting `abstract` components
+	 * 
+	 * @url https://docbox.ortusbooks.com/getting-started/annotating-your-code#custom-docbox-blocks
+	 */
+	variables.META_ABSTRACT = "doc_abstract";
+
+	/**
+	 * Custom annotation for noting generic method return types or argument types.
+	 * 
+	 * @url https://docbox.ortusbooks.com/getting-started/annotating-your-code#custom-docbox-blocks
+	 */
+	variables.META_GENERIC  = "doc_generic";
 
 	/**
 	 * Constructor
@@ -514,8 +524,8 @@ component doc_abstract="true" accessors="true" {
 		// get metadata
 		var meta        = getComponentMetadata( arguments.class );
 		// verify we have abstract class
-		if ( structKeyExists( meta, variables.static.META_ABSTRACT ) ) {
-			return meta[ variables.static.META_ABSTRACT ];
+		if ( structKeyExists( meta, variables.META_ABSTRACT ) ) {
+			return meta[ variables.META_ABSTRACT ];
 		}
 
 		return false;
@@ -536,10 +546,10 @@ component doc_abstract="true" accessors="true" {
 		if (
 			structKeyExists(
 				arguments.meta,
-				variables.static.META_GENERIC
+				variables.META_GENERIC
 			)
 		) {
-			var generics = listToArray( arguments.meta[ variables.static.META_GENERIC ] );
+			var generics = listToArray( arguments.meta[ variables.META_GENERIC ] );
 			// iterate and resolve
 			for ( var thisGeneric in generics ) {
 				if ( NOT isPrimitive( thisGeneric ) ) {
