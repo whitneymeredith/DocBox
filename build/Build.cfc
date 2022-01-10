@@ -45,10 +45,6 @@ component {
 			"docbox",
 			variables.cwd
 		);
-		fileSystemUtil.createMapping(
-			"coldbox",
-			variables.cwd & "tests/coldbox"
-		);
 
 		return this;
 	}

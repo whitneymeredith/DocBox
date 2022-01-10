@@ -10,6 +10,5 @@ component{
 	this.mappings[ "/tests" ] = getDirectoryFromPath( getCurrentTemplatePath() );
 	rootPath = REReplaceNoCase( this.mappings[ "/tests" ], "tests(\\|/)", "" );
 	this.mappings[ "/docbox" ] = rootPath;
-	this.mappings[ "/coldbox" ] = getDirectoryFromPath( getCurrentTemplatePath() ) & "coldbox";
 
 }
