@@ -18,10 +18,6 @@ component extends="docbox.strategy.AbstractTemplateStrategy" accessors="true" {
 		default="Untitled"
 		type   ="string";
 
-	// Static variables.
-	variables.static.TEMPLATE_PATH = "/docbox/strategy/json/resources/templates";
-	variables.static.ASSETS_PATH   = "/docbox/strategy/json/resources/static";
-
 	/**
 	 * Constructor
 	 *
