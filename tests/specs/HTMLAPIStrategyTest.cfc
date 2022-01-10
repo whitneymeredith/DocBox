@@ -1,5 +1,5 @@
 /**
- * My BDD Test
+ * Test HTML documentation strategy
  */
 component extends="testbox.system.BaseSpec" {
 
@@ -35,7 +35,7 @@ component extends="testbox.system.BaseSpec" {
 				);
 			} );
 
-			it( "produces JSON output in the correct directory", function(){
+			it( "produces HTML output in the correct directory", function(){
 				variables.docbox.generate(
 					source   = expandPath( "/tests" ),
 					mapping  = "tests",
