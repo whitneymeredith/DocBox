@@ -4,7 +4,7 @@
 <!------------------------------------------- PUBLIC ------------------------------------------->
 
 <cfscript>
-	instance.static.TEMPLATE_PATH = "/docbox/strategy/uml2tools/resources/templates";
+	variables.TEMPLATE_PATH = "/docbox/strategy/uml2tools/resources/templates";
 </cfscript>
 
 <cffunction name="init" hint="Constructor" access="public" returntype="XMIStrategy" output="false">
@@ -40,7 +40,7 @@
 
 		//write the index template
 		args = {path=getOutputFile()
-				,template="#instance.static.TEMPLATE_PATH#/template.uml"
+				,template="#variables.TEMPLATE_PATH#/template.uml"
 				,packages = packages
 				,qMetadata = qMetadata
 				};

@@ -1,5 +1,5 @@
 /**
- * My BDD Test
+ * Test the main DocBox model
  */
 component extends="testbox.system.BaseSpec" {
 
