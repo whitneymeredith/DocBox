@@ -15,9 +15,9 @@ component extends="testbox.system.BaseSpec" {
 		// all your suites go here.
 		describe( "DocBox", function(){
 			beforeEach( function(){
+				resetTmpDirectory( getDirectoryFromPath( variables.XMIOutputFile ) );
 				resetTmpDirectory( variables.HTMLOutputDir );
 				resetTmpDirectory( variables.JSONOutputDir );
-				resetTmpDirectory( getDirectoryFromPath( variables.XMIOutputFile ) );
 
 				variables.docbox = new docbox.DocBox();
 			} );
