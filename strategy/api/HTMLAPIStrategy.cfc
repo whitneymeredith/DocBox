@@ -47,9 +47,18 @@ component extends="docbox.strategy.AbstractTemplateStrategy" accessors="true" {
 
 	/**
 	 * Run this strategy
+	 * 
 	 * @qMetaData The metadata
+	 * @throws InvalidConfigurationException if directory does not exist or other invalid configuration is detected
 	 */
 	HTMLAPIStrategy function run( required query qMetadata ){
+		if ( !directoryExists( getOutputDir() ) ){
+			throw(
+				message = "Invalid configuration; output directory not found",
+				type = "InvalidConfigurationException",
+				detail = "OutputDir #getOutputDir()# does not exist."
+			);
+		}
 		// copy over the static assets
 		directoryCopy(
 			expandPath( variables.ASSETS_PATH ),
