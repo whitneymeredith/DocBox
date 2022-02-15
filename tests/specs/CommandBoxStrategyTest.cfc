@@ -35,6 +35,33 @@ component extends="testbox.system.BaseSpec" {
 				);
 			} );
 
+			it( "Supports strategy alias", function(){
+				new docbox.DocBox(
+						"CommandBox",
+						{
+							outputDir : variables.testOutputDir,
+							projectTitle : "custom CommandBox module"
+						}
+					)
+					.generate(
+						source   = expandPath( "/tests/resources/commandbox-docbox/commands" ),
+						mapping  = "commands",
+						excludes = "(coldbox|build\-docbox)"
+					);
+
+					var overviewFile = variables.testOutputDir & "/overview-frame.html";
+					expect( fileExists( overviewFile ) ).toBeTrue(
+						"should generate overview-frame.html file to list all commands"
+					);
+	
+					var overviewHTML = fileRead( overviewFile );
+					expect( overviewHTML ).toInclude(
+						"Generate",
+						"should document commands/generate.cfc in list of classes."
+					);
+
+			});
+
 			xit( "throws exception when outputDir does not exist", function() {
 				expect( function(){
 					var testDocBox = new docbox.DocBox(
