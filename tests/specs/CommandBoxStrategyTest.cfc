@@ -41,7 +41,7 @@ component extends="testbox.system.BaseSpec" {
 						strategy   = "docbox.strategy.CommandBox.CommandBoxStrategy",
 						properties = {
 							projectTitle : "DocBox Tests",
-							outputDir    : expandPath( "nowhere/USA" )
+							outputDir    : expandPath( "/tests/tmp/commandbox" )
 						}
 					);
 					testDocBox.generate(
