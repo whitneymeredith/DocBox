@@ -74,6 +74,9 @@ component accessors="true" {
 		if ( isSimpleValue( newStrategy ) ) {
 			// Discover the strategy
 			switch ( uCase( arguments.strategy ) ) {
+				case "CommandBox":
+					arguments.strategy = "docbox.strategy.CommandBox.CommandBoxStrategy";
+					break;
 				case "HTML":
 				case "HTMLAPISTRATEGY":
 					arguments.strategy = "docbox.strategy.api.HTMLAPIStrategy";
